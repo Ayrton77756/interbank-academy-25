@@ -1,30 +1,13 @@
 # Reto Técnico: Procesamiento de Transacciones Bancarias (CLI)
 
 ## Objetivo:
+Este proyecto realiza el procesamiento de un archivo CSV (`data.csv`) que contiene registros de transacciones de tipo "Crédito" y "Débito".
+Se calcula el balance final, se identifica la transacción con el monto mayor y se cuentan las transacciones por tipo.
 
-Desarrolla una aplicación de línea de comandos (CLI) que procese un archivo CSV con transacciones bancarias y genere un reporte que incluya:
+## Estructura de Datos
+El archivo `data.csv` tiene el siguiente formato:
 
-- **Balance Final:**  
-  Suma de los montos de las transacciones de tipo "Crédito" menos la suma de los montos de las transacciones de tipo "Débito".
-
-- **Transacción de Mayor Monto:**  
-  Identificar el ID y el monto de la transacción con el valor más alto.
-
-- **Conteo de Transacciones:**  
-  Número total de transacciones para cada tipo ("Crédito" y "Débito").
-
----
-
-## Instrucciones
-
-1. **Repositorio Base:**  
-   Clona o haz un fork del repositorio base disponible en:  
-   `https://github.com/codeableorg/interbank-academy-25`
-
-2. **Entrada de Datos:**  
-   La aplicación deberá leer un archivo CSV. Ejemplo de contenido:
-
-   ```
+   ```sh
    id,tipo,monto
    1,Crédito,100.00
    2,Débito,50.00
@@ -32,35 +15,21 @@ Desarrolla una aplicación de línea de comandos (CLI) que procese un archivo CS
    4,Débito,75.00
    5,Crédito,150.00
    ```
+Cada fila representa:
+* `id` → Identificador único de la transacción
+* `tipo` → Puede ser "Crédito" o "Débito"
+* `monto` →  Valor numérico de la transacción
 
-3. **Salida del Programa:**  
-   La aplicación debe mostrar el reporte final en la terminal.  
-   Ejemplo de salida:
-
-   ```
-   Reporte de Transacciones
-   ---------------------------------------------
-   Balance Final: 325.00
-   Transacción de Mayor Monto: ID 3 - 200.00
-   Conteo de Transacciones: Crédito: 3 Débito: 2
-   ```
-
-4. **Lenguaje de Programación:**  
-   Utiliza el lenguaje de tu preferencia. Opciones recomendadas:
-
-   - Python
-   - Java
-   - C#
-   - JavaScript (Node.js)
-
-5. **README del Proyecto:**  
-   Incluye un archivo `README.md` con la siguiente estructura:
-
-   - **Introducción:** Breve descripción del reto y su propósito.
-   - **Instrucciones de Ejecución:** Cómo instalar dependencias y ejecutar la aplicación.
-   - **Enfoque y Solución:** Lógica implementada y decisiones de diseño.
-   - **Estructura del Proyecto:** Archivos y carpetas principales.
-
-6. **Documentación y Calidad del Código:**
-   - Código bien documentado y fácil de leer.
-   - Comentarios explicando pasos clave y lógica del programa.
+## ¿Qué hace el script?
+1. **Leer el archivo CSV usando la librería estándar `csv`**
+2. **Salta la primera línea (Los encabezados)**
+3. **Procesar cada fila:**
+* Convertir el `monto` a `float`.
+* Sumar los montos de "Créditos" y "Débitos".
+* Contar la cantidad de "Créditos" y "Débitos".
+* Identificar la transacción con el monto más alto.
+4. **Calcular el balance final**
+5. **Mostrar los resultados por consola**
+* Mostrar el Balance final: Suma total de montos de crédito - Suma total de montos de débito.
+* Transacción con el monto mayor y su ID
+* Total de Transacciones de Crédito y Débito.
